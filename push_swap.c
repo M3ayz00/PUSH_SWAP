@@ -6,17 +6,17 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:40:50 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/04 19:35:03 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/06 19:10:18 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_a	*lst_new(int data)
+t_stack	*lst_new(int data)
 {
-	t_stack_a	*lst;
+	t_stack	*lst;
 	
-	lst = malloc(sizeof(t_stack_a));
+	lst = malloc(sizeof(t_stack));
 	if(!lst)
 	{
 		free(lst);
@@ -27,7 +27,7 @@ t_stack_a	*lst_new(int data)
 	return (lst);
 }
 
-void	lst_add_back(t_stack_a **lst, t_stack_a *new)
+void	lst_add_back(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
 		return ;
@@ -36,15 +36,15 @@ void	lst_add_back(t_stack_a **lst, t_stack_a *new)
 		*lst = new;
 		return ;
 	}
-	t_stack_a	*current = *lst;
+	t_stack	*current = *lst;
 	while(current->next)
 		current = current->next;
 	current->next = new;
 }
 
-void	free_all(t_stack_a **lst)
+void	free_all(t_stack **lst)
 {
-	t_stack_a *current;
+	t_stack *current;
 
 	current = *lst;
 	while(current)
@@ -55,9 +55,9 @@ void	free_all(t_stack_a **lst)
 	lst = NULL;
 }
 
-t_stack_a	*init_stack_a(char **numbers, int i)
+t_stack	*init_stack(char **numbers, int i)
 {
-	t_stack_a	*head;
+	t_stack	*head;
 	
 	head = NULL;
 	while(numbers[i])
@@ -132,16 +132,32 @@ int main(int ac, char **av)
 	}
 	if(ac > 2)
 	{
-		t_stack_a	*head = NULL;
+		t_stack	*head = NULL;
 		if(check_dups(numbers))
 			ft_perror(1, "Error : No duplicates allowed\n");
 		else
-			head = init_stack_a(numbers, i);
-		while(head)
+			head = init_stack(numbers, i);
+		if(ac == 3)
 		{
-			printf("%d, ",head->data);
-			head = head->next;
+			t_stack *test = NULL;
+			lst_add_back(&test, lst_new(123));
+			push_S(&head, &test, "pp");
+			while(test)
+			{
+				printf("STACK B -->%d\n",test->data);
+				test = test->next;
+			}
+			while(head)
+			{
+				printf("STACK A -->%d\n",head->data);
+				head = head->next;
+			}
 		}
+		// while(head)
+		// {
+		// 	printf("%d, ",head->data);
+		// 	head = head->next;
+		// }
 		printf("\n");
 		
 	}
