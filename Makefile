@@ -6,14 +6,14 @@ SRCS = push_swap.c
 all : $(NAME)
 
 $(NAME) : $(SRCS)
-	@cd LIBFT-main && make
+	@cd libft && make
 	@$(CC) $(SRCS) LIBFT-main/libft.a -o $(NAME)
 
 clean : 
-	@cd LIBFT-main && make clean
+	@cd libft && make clean
 
 fclean : clean
-	@cd LIBFT-main && make fclean
+	@cd libft && make fclean
 	@rm -f $(NAME)
 
 re : fclean all
