@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstget_min.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 15:27:56 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 15:27:57 by msaadidi         ###   ########.fr       */
+/*   Created: 2024/01/07 17:06:11 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/07 18:40:13 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include <unistd.h>
-
-size_t	ft_strlen(const char *str)
+int ft_lstget_min(t_stack **stack)
 {
-	size_t	i;
+    t_stack *curr;
+    int min;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+    curr = *stack;
+    min = (*stack)->data;
+    while(curr->next)
+    {
+        if(min > curr->next->data)
+            min = curr->next->data;
+        curr = curr->next;
+    }
+    return (min);
 }

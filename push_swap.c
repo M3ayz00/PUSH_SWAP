@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 15:40:50 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 04:37:21 by m3ayz00          ###   ########.fr       */
+/*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/07 18:58:11 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "push_swap.h"
 
@@ -72,11 +73,11 @@ int check_dups(char **strs)
 	while(strs[i])
 	{
 		int c = 0;
-		int j = 1;
+		int j = 0;
 
 		while(strs[j])
 		{
-			if(ft_intcmp(ft_atoi(strs[j]), ft_atoi(strs[i])) == 1)
+			if(ft_intcmp(ft_atoi(strs[i]), ft_atoi(strs[j])) == 1)
 			{
 				if(c == 1)
 					return (1);
@@ -136,7 +137,6 @@ int main(int ac, char **av)
 			i = 0;
 			if (ac <= 2)
 				ft_perror(0, "No actions to be done.\n");
-
 		}
 		else
 			ft_perror(0, "No actions to be done.\n");
@@ -144,27 +144,33 @@ int main(int ac, char **av)
 	if(ac > 2)
 	{
 		t_stack	*head = NULL;
+		t_stack *test = NULL;
 		check_input(numbers);
 		if(check_dups(numbers))
 			ft_perror(1, "Error : No duplicates allowed\n");
 		else
 			head = init_stack(numbers, i);
-		if(ac == 3)
-		{
-			t_stack *test = NULL;
-			ft_lstadd_back(&test, lst_new(123));
-			ft_lstadd_back(&test, lst_new(-3));
-			r_rotate(&test, "rrb");
-			while(test)
-			{
-				printf("STACK B -->%d\n",test->data);
-				test = test->next;
-			}
+		if(ft_lstsize(head) == 2)
+			sort_2(&head);
+		else if(ft_lstsize(head) == 3)
+			sort_3(&head);
+		else if(ft_lstsize(head) == 5)
+			sort_5(&head, &test);
+		// if(ac == 3)
+		// {
+		// 	ft_lstadd_back(&test, lst_new(123));
+		// 	ft_lstadd_back(&test, lst_new(-3));
+		// 	r_rotate(&head, "rra");
+		// 	while(test)
+		// 	{
+		// 		printf("STACK B -->%d\n",test->data);
+		// 		test = test->next;
+		// 	}
 			while(head)
 			{
 				printf("STACK A -->%d\n",head->data);
 				head = head->next;
 			}
-		}
+		// }
 	}
 }

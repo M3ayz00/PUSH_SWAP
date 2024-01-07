@@ -3,18 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+         #
+#    By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/09 17:20:09 by elel-yak          #+#    #+#              #
-#    Updated: 2024/01/07 04:36:37 by m3ayz00          ###   ########.fr        #
+#    Created: 2024/01/07 15:28:45 by msaadidi          #+#    #+#              #
+#    Updated: 2024/01/07 18:39:45 by msaadidi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = libft.a
-# 	* command to compile our functions
 CFLAGS	= -Wall -Werror -Wextra 
 CC	= cc
-# 	* functions that must be compiled through our makefile
 SRCS    = ft_atoi.c \
 	ft_bzero.c \
 	ft_calloc.c \
@@ -59,12 +58,11 @@ SRCS    = ft_atoi.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
 	ft_lstbfr_last.c \
+	ft_islst_sorted.c \
+	ft_lstget_min.c \
 
-# 	* create our executable file
-# 	* replace all files with .c extension to .o extension
 OBJS 	= $(SRCS:.c=.o)
 
-# 	* "rules" for our makefile to run
 all:	$(NAME)
 
 $(NAME): $(OBJS)

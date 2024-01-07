@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 15:33:05 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 04:35:46 by m3ayz00          ###   ########.fr       */
+/*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/07 18:40:58 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ void    push(t_stack **A, t_stack **B, char *op);
 void    rotate(t_stack **stack, char *op);
 void    rotate_S(t_stack **A, t_stack **B ,char *op);
 void    r_rotate(t_stack **stack, char *op);
+void    r_rotate_S(t_stack **A, t_stack **B, char *op);
+void    sort_2(t_stack **stack);
+void    sort_3(t_stack **stack);
+void    sort_5(t_stack **A, t_stack **B);
 
 #endif

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 15:13:21 by elel-yak          #+#    #+#             */
-/*   Updated: 2024/01/07 04:36:25 by m3ayz00          ###   ########.fr       */
+/*   Created: 2024/01/07 15:28:33 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/07 17:48:13 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -71,5 +72,8 @@ void	ft_lstdelone(t_stack *lst, void (*del)(int));
 void	ft_lstclear(t_stack **lst, void (*del)(int));
 void	ft_lstiter(t_stack *lst, void (*f)(int));
 t_stack *ft_lstbfr_last(t_stack *stack);
+int     ft_islst_sorted(t_stack **stack);
+int     ft_lstget_min(t_stack **stack);
+
 
 #endif

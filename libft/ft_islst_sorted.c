@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_islst_sorted.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 15:27:56 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 15:27:57 by msaadidi         ###   ########.fr       */
+/*   Created: 2024/01/07 16:33:51 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/07 16:38:18 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include <unistd.h>
-
-size_t	ft_strlen(const char *str)
+int ft_islst_sorted(t_stack **stack)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+    t_stack *curr;
+    
+    if (!stack || !(*stack) || !(*stack)->next)
+        return (0);
+    curr = *stack;
+    while(curr->next)
+    {
+        if(curr->data < curr->next->data)
+            curr = curr->next;
+        else
+            return (0);
+    }
+    return (1);
+    
 }

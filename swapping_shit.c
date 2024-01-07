@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   swapping_shit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 17:29:18 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 04:35:32 by m3ayz00          ###   ########.fr       */
+/*   Created: 2024/01/07 15:25:28 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/07 17:29:45 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "push_swap.h"
 
@@ -49,7 +50,7 @@ void    push(t_stack **A, t_stack **B, char *op)
 {
     t_stack *temp;
     
-    if (!A || !(*A))
+    if (!A || !(*A) || !B)
        return ;
     temp = (*A);
     *A = temp->next;
@@ -100,9 +101,22 @@ void    r_rotate(t_stack **stack, char *op)
         return;
     bfrlast = ft_lstbfr_last(*stack);
     first = *stack;
-    first->next = bfrlast->next;
-    bfrlast->next = NULL;
+    *stack = bfrlast->next;
+    (*stack)->next = first;
+    first->next = NULL;
     
     if (op)
+        ft_putendl_fd(op, 1);
+}
+
+void    r_rotate_S(t_stack **A, t_stack **B, char *op)
+{
+    if (!A || !(*A) || !(*A)->next)
+        return;
+    if (!B || !(*B) || !(*B)->next)
+        return;
+    r_rotate(A, NULL);
+    r_rotate(B, NULL);
+    if(op)
         ft_putendl_fd(op, 1);
 }
