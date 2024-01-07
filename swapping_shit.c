@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   swapping_shit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:29:18 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/06 19:18:50 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/07 04:35:32 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    swap(int *a, int *b)
+void    swap_data(int *a, int *b)
 {
     int tmp;
     tmp = *a;
@@ -20,79 +20,89 @@ void    swap(int *a, int *b)
     *b = tmp;
 }
 
-void    swap_A(t_stack **stack, char *op)
+void    swap(t_stack **stack, char *op)
 {
     if (!stack || !(*stack) || !(*stack)->next)
         return;
 
-    swap(&((*stack)->data), &((*stack)->next->data));
+    swap_data(&((*stack)->data), &((*stack)->next->data));
     if(op)
-        ft_putstr_endl(op);
+        ft_putendl_fd(op, 1);
 }
 
-void    swap_B(t_stack **stack, char *op)
-{
-    if (!stack || !(*stack) || !(*stack)->next)
-        return;
 
-    swap(&((*stack)->data), &((*stack)->next->data));
+
+void    swap_S(t_stack **A, t_stack **B, char*op)
+{
+    if (!A || !(*A) || !(*A)->next)
+        return;
+    if (!B || !(*B) || !(*B)->next)
+        return;
+    swap(A, NULL);
+    swap(B, NULL);
     if(op)
-        ft_putstr_endl(op);
+        ft_putendl_fd(op, 1);
 }
 
-void    swap_S(t_stack **stackA, t_stack **stackB, char*op)
-{
-    if (!stackA || !(*stackA) || !(*stackA)->next)
-        return;
-    if (!stackB || !(*stackB) || !(*stackB)->next)
-        return;
-    swap_A(stackA, NULL);
-    swap_B(stackB, NULL);
-    if(op)
-        ft_putstr_endl(op);
-}
 
-void    push_A(t_stack **A, t_stack **B, char *op)
+void    push(t_stack **A, t_stack **B, char *op)
 {
-    if(!B || !(*B))
-       return;
     t_stack *temp;
-    temp = (*B);
-    *B = temp->next;
-    if(*A)
-        temp->next = *A;
-    else
-        temp->next = NULL;
-    *A = temp;
-    if(op)
-        ft_putstr_endl(op);
-}
-
-void    push_B(t_stack **A, t_stack **B, char *op)
-{
-    if(!A || !(*A))
-       return;
-    t_stack *temp;
+    
+    if (!A || !(*A))
+       return ;
     temp = (*A);
     *A = temp->next;
-    if(*B)
+    if (*B)
         temp->next = *B;
     else
         temp->next = NULL;
     *B = temp;
+    
     if(op)
-        ft_putstr_endl(op);
+        ft_putendl_fd(op, 1);
 }
 
-void    push_S(t_stack **A, t_stack **B, char *op)
+void    rotate(t_stack **stack, char *op)
 {
-    t_stack *temp;
-    push_A(A, B, NULL);
-    printf("data pushed to A : %d\n", (*A)->data);
-    temp = *A;
-    temp = temp->next;
-    push_B(&temp, B, NULL);
-    printf("data pushed to B : %d\n", (*B)->data);
+    t_stack *last;
+    t_stack *first;
+    
+    if (!stack || !(*stack) || !(*stack)->next)
+        return;
+    first = *stack;
+    *stack = (*stack)->next;
+    last = ft_lstlast(*stack);
+    last->next = first; 
+    first->next = NULL;
+    
+    if (op)
+        ft_putendl_fd(op, 1);
+}
+void    rotate_S(t_stack **A, t_stack** B,char *op)
+{
+    if (!A || !(*A) || !(*A)->next)
+        return;
+    if (!B || !(*B) || !(*B)->next)
+        return;
+    rotate(A, NULL);
+    rotate(B, NULL);
     if(op)
-         ft_putstr_endl(op);
+        ft_putendl_fd(op, 1);
+}
+
+void    r_rotate(t_stack **stack, char *op)
+{
+    t_stack *bfrlast;
+    t_stack *first;
+    
+    if (!stack || !(*stack) || !(*stack)->next)
+        return;
+    bfrlast = ft_lstbfr_last(*stack);
+    first = *stack;
+    first->next = bfrlast->next;
+    bfrlast->next = NULL;
+    
+    if (op)
+        ft_putendl_fd(op, 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:33:05 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/06 19:08:09 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/07 04:35:46 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ typedef struct s_stack
 # include "libft/libft.h"
 # include <stdio.h>
 
-void    swap(int *a, int *b);
-void    swap_A(t_stack **A, char *op);
-void    swap_B(t_stack **B, char *op);
-void    swap_S(t_stack **stackA, t_stack **stackB, char*op);
-void    push_A(t_stack **A, t_stack **B, char *op);
-void    push_B(t_stack **A, t_stack **B, char *op);
-void    push_S(t_stack **A, t_stack **B, char *op);
+void    swap_data(int *a, int *b);
+void    swap(t_stack **B, char *op);
+void    swap_S(t_stack **A, t_stack **B, char*op);
+void    push(t_stack **A, t_stack **B, char *op);
+void    rotate(t_stack **stack, char *op);
+void    rotate_S(t_stack **A, t_stack **B ,char *op);
+void    r_rotate(t_stack **stack, char *op);
+
 #endif
