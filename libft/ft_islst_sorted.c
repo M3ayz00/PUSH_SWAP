@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:33:51 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 16:38:18 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:19:44 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int ft_islst_sorted(t_stack **stack)
     curr = *stack;
     while(curr->next)
     {
-        if(curr->data < curr->next->data)
-            curr = curr->next;
-        else
+        if(curr->data > curr->next->data)
             return (0);
+        curr = curr->next;
     }
     return (1);
     

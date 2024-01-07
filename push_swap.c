@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 18:58:11 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:24:19 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,16 @@ int	ft_intcmp(int a, int b)
 {
 	return(a == b);
 }
-int check_dups(char **strs)
+int check_dups(char **strs, int i)
 {
-	int i = 1;
-		
 	while(strs[i])
 	{
 		int c = 0;
-		int j = 0;
+		int j = 1;
 
 		while(strs[j])
 		{
-			if(ft_intcmp(ft_atoi(strs[i]), ft_atoi(strs[j])) == 1)
+			if(ft_intcmp(ft_atoi(strs[j]), ft_atoi(strs[i])) == 1)
 			{
 				if(c == 1)
 					return (1);
@@ -91,10 +89,8 @@ int check_dups(char **strs)
 	return(0);
 }
 
-void	check_input(char **strs)
+void	check_input(char **strs, int i)
 {
-	int i = 1;
-
 	while(strs[i])
 	{
 		int j = 0;
@@ -145,8 +141,8 @@ int main(int ac, char **av)
 	{
 		t_stack	*head = NULL;
 		t_stack *test = NULL;
-		check_input(numbers);
-		if(check_dups(numbers))
+		check_input(numbers, i);
+		if(check_dups(numbers, i))
 			ft_perror(1, "Error : No duplicates allowed\n");
 		else
 			head = init_stack(numbers, i);
@@ -166,11 +162,11 @@ int main(int ac, char **av)
 		// 		printf("STACK B -->%d\n",test->data);
 		// 		test = test->next;
 		// 	}
-			while(head)
-			{
-				printf("STACK A -->%d\n",head->data);
-				head = head->next;
-			}
+		while(head)
+		{
+			printf("STACK A -->%d\n",head->data);
+			head = head->next;
+		}
 		// }
 	}
 }
