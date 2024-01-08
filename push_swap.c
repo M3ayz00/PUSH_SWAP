@@ -6,7 +6,7 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/08 03:20:15 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/08 03:49:17 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int main(int ac, char **av)
 			sort_2(&head);
 		else if(ft_lstsize(head) == 3)
 			sort_3(&head);
-		else if(ft_lstsize(head) == 5 || ft_lstsize(head) == 4)
+		else if(ft_lstsize(head) <= 5)
 			sort_5(&head, &test);
 		// if(ac == 3)
 		// {

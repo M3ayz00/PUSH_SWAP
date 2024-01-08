@@ -6,7 +6,7 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:25:21 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/08 03:19:08 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/08 03:48:16 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void    sort_5(t_stack **A, t_stack **B)
         push(A, B, "pb");
     if(ft_lstsize(*A) == 3)
         sort_3(A);
+    else if((*A)->data > (*A)->next->data)
+        swap(A, "sa");
     push(B, A, "pa");
     push(B, A, "pa");
 }
