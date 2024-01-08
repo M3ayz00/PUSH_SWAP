@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstget_min.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:06:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 18:40:13 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/07 22:41:31 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_lstget_min(t_stack **stack)
     int min;
 
     curr = *stack;
-    min = (*stack)->data;
+    min = curr->data;
     while(curr->next)
     {
         if(min > curr->next->data)

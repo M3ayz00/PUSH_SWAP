@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstbfr_last.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:26:25 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 15:26:26 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/07 23:24:41 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,9 @@
 
 t_stack *ft_lstbfr_last(t_stack *stack)
 {
-    while(stack && stack->next)
-    {
-        if(stack->next->next)
-        {
-            stack = stack->next;
-            continue;
-        }
-        break;
-    }
+    if (!stack || !stack->next)
+        return (NULL);
+    while(stack->next->next)
+        stack = stack->next;
     return (stack);
 }

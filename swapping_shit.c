@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swapping_shit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:25:28 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 17:29:45 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/08 03:17:41 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void    swap(t_stack **stack, char *op)
 {
     if (!stack || !(*stack) || !(*stack)->next)
         return;
-
-    swap_data(&((*stack)->data), &((*stack)->next->data));
+    swap_data(&(*stack)->data, &((*stack)->next->data));
     if(op)
         ft_putendl_fd(op, 1);
 }
@@ -52,7 +51,7 @@ void    push(t_stack **A, t_stack **B, char *op)
     
     if (!A || !(*A) || !B)
        return ;
-    temp = (*A);
+    temp = *A;
     *A = temp->next;
     if (*B)
         temp->next = *B;
@@ -96,15 +95,21 @@ void    r_rotate(t_stack **stack, char *op)
 {
     t_stack *bfrlast;
     t_stack *first;
+    t_stack *last;
     
     if (!stack || !(*stack) || !(*stack)->next)
         return;
+    if(!(*stack)->next->next)
+    {
+        swap(&(*stack),NULL);
+        return ;
+    }
+    last = ft_lstlast(*stack);
     bfrlast = ft_lstbfr_last(*stack);
     first = *stack;
-    *stack = bfrlast->next;
+    *stack = last;
     (*stack)->next = first;
-    first->next = NULL;
-    
+    bfrlast->next = NULL;
     if (op)
         ft_putendl_fd(op, 1);
 }
