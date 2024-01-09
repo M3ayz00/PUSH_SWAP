@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/08 03:49:17 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/09 20:22:32 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-t_stack	*lst_new(int data)
+t_stack	*lst_new(int data, int i)
 {
 	t_stack	*lst;
 	
@@ -23,6 +23,8 @@ t_stack	*lst_new(int data)
 		free(lst);
 		return (NULL);
 	}
+	lst->rank = i;
+	lst->cheapest = 0;
 	lst->data = data;
 	lst->next = NULL;
 	return (lst);
@@ -44,11 +46,14 @@ void	free_all(t_stack **lst)
 t_stack	*init_stack(char **numbers, int i)
 {
 	t_stack	*head;
+	int j;
 	
+	j = 0;
 	head = NULL;
 	while(numbers[i])
 	{
-		ft_lstadd_back(&head, lst_new(ft_atoi(numbers[i])));
+		ft_lstadd_back(&head, lst_new(ft_atoi(numbers[i]), j));
+		j++;
 		i++;
 	}
 	return (head);
@@ -159,7 +164,7 @@ int main(int ac, char **av)
 		// 	r_rotate(&head, "rra");
 		// 	while(test)
 		// 	{
-		// 		printf("STACK B -->%d\n",test->data);
+		// 		printf("STACK B -->%d\n",test->data);	
 		// 		test = test->next;
 		// 	}
 		while(head)

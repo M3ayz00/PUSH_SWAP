@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 15:26:43 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/09 20:21:33 by msaadidi         ###   ########.fr       */
+/*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/09 20:04:03 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-#include "libft.h"
-
-t_stack	*ft_lstnew(int data)
+void    update_rank(t_stack **stack)
 {
-	t_stack	*lst;
-
-	lst = (t_stack *)malloc(sizeof(t_stack));
-	if (!lst)
-		return (0);
-	lst->data = data;
-	lst->next = 0;
-	return (lst);
+    int i;
+    
+    if (!stack || !(*stack))
+        return ;
+    i = 0;
+    while(*stack)
+    {
+        (*stack)->rank = i;
+        i++;
+        (*stack) = (*stack)->next;
+    }
 }
 
+int calculate_moves(t_stack **A, t_stack **B)
+{
+    
+}

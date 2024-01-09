@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_shit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:25:21 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/08 03:48:16 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/09 19:53:10 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void    sort_5(t_stack **A, t_stack **B)
 {
     if(!A || !(*A) || !(*A)->next || !B)
         return ;
-
     while((*A)->data != ft_lstget_min(A))
         rotate(A, "ra");
     if((*A)->data == ft_lstget_min(A))
