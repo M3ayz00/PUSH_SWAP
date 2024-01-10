@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/01/10 16:06:04 by m3ayz00          ###   ########.fr       */
+/*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
+/*   Updated: 2024/01/10 21:15:05 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 
 t_stack *get_cheapest(t_stack *stack)
 {
@@ -95,66 +96,23 @@ void    set_target_node(t_stack *A, t_stack *B)
     }
     
 }
-
-void    init_nodes(t_stack *A, t_stack *B)
+void    last_rotations(t_stack **stack, t_stack *top, char c)
 {
-    update_position(A);
-    update_position(B);
-    set_target_node(A, B);
-    set_push_cost(A, B);
-}
-
-void    move_nodes(t_stack **A, t_stack **B)
-{
-    t_stack *cheapest;
-
-    cheapest = get_cheapest(*B);
-    if(cheapest->above_median == 1 && cheapest->target_node->above_median == 1)
-        rotate_both(A, B, cheapest);
-    else if (cheapest->above_median == 0 && cheapest->above_median == 0)
-        r_rotate_both(A, B, cheapest);
-    last_rotations(B, cheapest, 'b');
-    last_rotations(A, cheapest->target_node, 'a');
-    push(B, A, "pa");
-}
-
-void    push_swap(t_stack **A, t_stack **B)
-{
-    t_stack *min;
-    int len_a;
-    
-    len_a = ft_lstsize(*A);
-    while(len_a-- > 3)
-        push(A, B, "pb");
-    sort_3(A);
-    while(B && *B)
-    {   
-        // t_stack *curr = *A;
-        // while(curr)
-		// {
-		// 	printf("STACK A -->%d\n",curr->data);
-		// 	curr = curr->next;
-		// }
-        // printf("\n_______________\n");
-        init_nodes(*A, *B);
-        move_nodes(A, B);
-        // curr = *A;
-        // while(curr)
-		// {
-		// 	printf("STACK A -->%d\n",curr->data);
-		// 	curr = curr->next;
-		// }
-        // printf("\n_______________\n");
+    while(*stack != top)
+    {
+        if (c == 'a')
+        {
+            if(top->above_median == 1)
+                rotate(stack, "ra");
+            else
+                r_rotate(stack, "rra");
+        }
+        else if (c == 'b')
+        {
+            if(top->above_median == 1)
+                rotate(stack, "rb");
+            else
+                r_rotate(stack, "rrb");
+        }
     }
-    update_position(*A);
-    min = ft_lstget_minnode(*A);
-    if(min->above_median == 1)
-        while(*A != min)
-            rotate(A, "ra");
-    else
-        while(*A != min)
-            r_rotate(A, "rra");
-    // swap(A, "sa");
-    // rotate(A, "ra");
-    // rotate(A, "ra");
 }

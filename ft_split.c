@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:30 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 15:27:31 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/01/10 21:57:53 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "libft.h"
+#include "push_swap.h"
 
 static int	ft_wordlen(char const *s, char c)
 {

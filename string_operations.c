@@ -1,17 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   string_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 15:25:36 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 20:06:10 by msaadidi         ###   ########.fr       */
+/*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
+/*   Updated: 2024/01/10 21:56:59 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-#include "libft.h"
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int i = 0;
+	while((s1[i] || s2[i]) && s1[i] == s2[i])
+		i++;
+	return(s1[i] - s2[i]);
+}
+
+int	ft_intcmp(int a, int b)
+{
+	return(a == b);
+}
+
+void    ft_perror(int e, char *err)
+{
+    ft_putstr_fd(err, 2);
+    exit(e);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -28,16 +51,8 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	if (str[i] == '-' || str[i] == '+')
-		ft_perror(1, "Error : double signs.\n");
-	if (!ft_isdigit(str[i]))
-		ft_perror(1, "Error : Provide a valid argument (int).\n");
 	while (ft_isdigit(str[i]))
-	{
 		result = result * 10 + str[i++] - '0';
-		if (!ft_isdigit(str[i]) && str[i] != '\0')
-			ft_perror(1, "Error : Provide a valid argument (int).\n");
-	}
 	if (result > INT_MAX)
 		ft_perror(1, "Error : value greater than INT MAX.\n");
 	return (result * sign);
