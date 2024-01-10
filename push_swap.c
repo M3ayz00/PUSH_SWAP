@@ -6,7 +6,7 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/10 18:44:39 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:01:41 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_stack	*lst_new(int data, int index)
 		free(lst);
 		return (NULL);
 	}
+	lst->cheapest = 0;
 	lst->index = index;
 	lst->data = data;
 	lst->next = NULL;
@@ -45,13 +46,14 @@ void	free_all(t_stack **lst)
 t_stack	*init_stack(char **numbers, int i)
 {
 	t_stack	*head;
-	int		j;
+	int j;
 	
 	j = 0;
 	head = NULL;
 	while(numbers[i])
 	{
 		ft_lstadd_back(&head, lst_new(ft_atoi(numbers[i]), j));
+		j++;
 		i++;
 	}
 	return (head);
@@ -157,7 +159,7 @@ int main(int ac, char **av)
 		// 	r_rotate(&head, "rra");
 		// 	while(test)
 		// 	{
-		// 		printf("STACK B -->%d\n",test->data);
+		// 		printf("STACK B -->%d\n",test->data);	
 		// 		test = test->next;
 		// 	}
 		// while(head)
