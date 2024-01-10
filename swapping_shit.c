@@ -6,7 +6,7 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:25:28 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/08 03:17:41 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/10 14:52:38 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,40 @@ void    r_rotate_S(t_stack **A, t_stack **B, char *op)
     r_rotate(B, NULL);
     if(op)
         ft_putendl_fd(op, 1);
+}
+
+void    rotate_both(t_stack **A, t_stack **B, t_stack *cheapest)
+{
+    while (*A != cheapest->target_node && *B != cheapest)
+        rotate_S(A, B, "rr");
+    update_position(*A);
+    update_position(*B);
+}
+
+void    r_rotate_both(t_stack **A, t_stack **B, t_stack *cheapest)
+{
+    while (*A != cheapest->target_node && *B != cheapest)
+        r_rotate_S(A, B, "rrr");
+    update_position(*A);
+    update_position(*B);
+}
+void    last_rotations(t_stack **stack, t_stack *top, char c)
+{
+    while(*stack != top)
+    {
+        if (c == 'a')
+        {
+            if(top->above_median == 1)
+                rotate(stack, "ra");
+            else
+                r_rotate(stack, "rra");
+        }
+        else if (c == 'b')
+        {
+            if(top->above_median == 1)
+                rotate(stack, "rb");
+            else
+                r_rotate(stack, "rrb");
+        }
+    }
 }

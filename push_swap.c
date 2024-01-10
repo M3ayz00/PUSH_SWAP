@@ -6,14 +6,14 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/08 03:49:17 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/10 18:44:39 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-t_stack	*lst_new(int data)
+t_stack	*lst_new(int data, int index)
 {
 	t_stack	*lst;
 	
@@ -23,6 +23,7 @@ t_stack	*lst_new(int data)
 		free(lst);
 		return (NULL);
 	}
+	lst->index = index;
 	lst->data = data;
 	lst->next = NULL;
 	return (lst);
@@ -44,11 +45,13 @@ void	free_all(t_stack **lst)
 t_stack	*init_stack(char **numbers, int i)
 {
 	t_stack	*head;
+	int		j;
 	
+	j = 0;
 	head = NULL;
 	while(numbers[i])
 	{
-		ft_lstadd_back(&head, lst_new(ft_atoi(numbers[i])));
+		ft_lstadd_back(&head, lst_new(ft_atoi(numbers[i]), j));
 		i++;
 	}
 	return (head);
@@ -66,22 +69,17 @@ int	ft_intcmp(int a, int b)
 {
 	return(a == b);
 }
+
 int check_dups(char **strs, int i)
 {
 	while(strs[i])
 	{
-		int c = 0;
-		int j = 1;
+		int j = i + 1;
 
 		while(strs[j])
 		{
 			if(ft_intcmp(ft_atoi(strs[j]), ft_atoi(strs[i])) == 1)
-			{
-				if(c == 1)
-					return (1);
-				else if(c == 0)
-					c = 1;
-			}
+				return (1);
 			j++;
 		}
 		i++;
@@ -150,8 +148,8 @@ int main(int ac, char **av)
 			sort_2(&head);
 		else if(ft_lstsize(head) == 3)
 			sort_3(&head);
-		else if(ft_lstsize(head) <= 5)
-			sort_5(&head, &test);
+		else if (ft_lstsize(head) > 3)
+			push_swap(&head, &test);
 		// if(ac == 3)
 		// {
 		// 	ft_lstadd_back(&test, lst_new(123));
@@ -162,11 +160,11 @@ int main(int ac, char **av)
 		// 		printf("STACK B -->%d\n",test->data);
 		// 		test = test->next;
 		// 	}
-		while(head)
-		{
-			printf("STACK A -->%d\n",head->data);
-			head = head->next;
-		}
+		// while(head)
+		// {
+		// 	printf("STACK A -->%d\n",head->data);
+		// 	head = head->next;
+		// }
 		// }
 	}
 }

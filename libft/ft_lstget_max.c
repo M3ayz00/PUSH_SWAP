@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstget_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 15:28:05 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/07 15:28:06 by msaadidi         ###   ########.fr       */
+/*   Created: 2024/01/10 11:51:54 by m3ayz00           #+#    #+#             */
+/*   Updated: 2024/01/10 11:54:41 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int ft_lstget_max(t_stack *stack)
 {
-	size_t	i;
+    int max;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((s1[i] || s2[i]) && i + 1 <= n)
-	{
-		if (s1[i] == s2[i])
-			i++;
-		else
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	}
-	return (0);
+    max = stack->data;
+    while(stack->next)
+    {
+        if(max < stack->next->data)
+            max = stack->next->data;
+        stack = stack->next;
+    }
+    return (max);
 }
