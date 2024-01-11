@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/01/10 21:56:59 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:57:08 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,23 @@ int	ft_isdigit(int c)
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i = 0;
-	while((s1[i] || s2[i]) && s1[i] == s2[i])
+	int	i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && s1[i] == s2[i])
 		i++;
-	return(s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
 }
 
 int	ft_intcmp(int a, int b)
 {
-	return(a == b);
+	return (a == b);
 }
 
-void    ft_perror(int e, char *err)
+void	ft_perror(int e, char *err)
 {
-    ft_putstr_fd(err, 2);
-    exit(e);
+	ft_putstr_fd(err, 2);
+	exit(e);
 }
 
 int	ft_atoi(const char *str)

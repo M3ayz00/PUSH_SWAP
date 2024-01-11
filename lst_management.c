@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:43:40 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/01/10 21:57:34 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/11 12:48:09 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 t_stack	*lst_new(int data, int index)
 {
 	t_stack	*lst;
-	
+
 	lst = malloc(sizeof(t_stack));
-	if(!lst)
+	if (!lst)
 	{
 		free(lst);
 		return (NULL);
 	}
-	lst->cheapest = 0;
 	lst->index = index;
 	lst->data = data;
 	lst->next = NULL;
@@ -43,7 +42,6 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		last->next = new;
 	}
 }
-
 
 int	ft_lstsize(t_stack *lst)
 {
@@ -75,18 +73,18 @@ void	ft_lstclear(t_stack **lst)
 	*lst = NULL;
 }
 
-int ft_islst_sorted(t_stack **stack)
+int	ft_islst_sorted(t_stack **stack)
 {
-    t_stack *curr;
-    
-    if (!stack || !(*stack) || !(*stack)->next)
-        return (0);
-    curr = *stack;
-    while(curr->next)
-    {
-        if(curr->data > curr->next->data)
-            return (0);
-        curr = curr->next;
-    }
-    return (1);
+	t_stack	*curr;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+		return (0);
+	curr = *stack;
+	while (curr->next)
+	{
+		if (curr->data > curr->next->data)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
 }

@@ -3,31 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/11 00:01:17 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/11 13:09:58 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	char **numbers = av;
-	int i = 1;
-	if(ac == 1)
+	char	**numbers;
+	int		i;
+
+	numbers = av;
+	i = 1;
+	if(ac == 1 || (ac == 2 && !av[1][0]))
 		ft_perror(1, "Error : 0 provided arguments.\n");
 	if(ac == 2)
 	{
 		if(is_many(av[1], ' '))
 		{
 			ac = ft_wordcount(av[1], ' ') + 1;
-			numbers = ft_split(av[1], ' ');
-			i = 0;
 			if (ac <= 2)
 				ft_perror(0, "No actions to be done.\n");
+			numbers = ft_split(av[1], ' ');
+			i = 0;
 		}
 		else
 			ft_perror(0, "No actions to be done.\n");
