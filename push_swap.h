@@ -6,7 +6,7 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/10 21:59:36 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/11 00:29:20 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 typedef struct s_stack
 {
 	int				index;
-	int				cheapest;
 	int				data;
 	int				above_median;
 	int				push_cost;
@@ -85,7 +84,7 @@ char	**ft_split(char const *s, char c);
 //check_errors
 int		check_dups(char **strs, int i);
 void	check_input(char **strs, int i);
-int is_many(char *str, char c);
+int		is_many(char *str, char c);
 t_stack	*init_stack(char **numbers, int i);
 
 

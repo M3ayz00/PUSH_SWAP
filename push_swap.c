@@ -6,7 +6,7 @@
 /*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/10 21:57:48 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/01/11 00:01:17 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ int main(int ac, char **av)
 		t_stack *test = NULL;
 		check_input(numbers, i);
 		head = init_stack(numbers, i);
-		if(ft_lstsize(head) == 2)
-			sort_2(&head);
-		else if(ft_lstsize(head) == 3)
-			sort_3(&head);
-		else if (ft_lstsize(head) > 3)
-			push_swap(&head, &test);
+		if(!ft_islst_sorted(&head))
+		{		
+			if(ft_lstsize(head) == 2)
+				sort_2(&head);
+			else if(ft_lstsize(head) == 3)
+				sort_3(&head);
+			else if (ft_lstsize(head) > 3)
+				push_swap(&head, &test);
+		}
 		ft_lstclear(&head);
 	}
-	system("Leaks ./push_swap");
+	// system("Leaks ./push_swap");
 }
