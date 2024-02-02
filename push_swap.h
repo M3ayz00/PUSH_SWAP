@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/11 13:08:44 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:59:33 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ void	r_rotate(t_stack **stack, char *op);
 void	swap_s(t_stack **A, t_stack **B, char *op);
 void	rotate_s(t_stack **A, t_stack **B, char *op);
 void	r_rotate_s(t_stack **A, t_stack **B, char *op);
-void	rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
-void	r_rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
-// push_swap_utils
-void	last_rotations(t_stack **stack, t_stack *top, char c);
+void	rotate_both_a(t_stack **A, t_stack **B, t_stack *cheapest);
+void	r_rotate_both_a(t_stack **A, t_stack **B, t_stack *cheapest);
+void	rotate_both_b(t_stack **A, t_stack **B, t_stack *cheapest);
+void	r_rotate_both_b(t_stack **A, t_stack **B, t_stack *cheapest);
+// push_swap_utils_b
 void	set_target_node(t_stack *A, t_stack *B);
 void	set_push_cost(t_stack *A, t_stack *B);
+void	last_rotations(t_stack **stack, t_stack *top, char c);
 void	update_position(t_stack *stack);
 t_stack	*get_cheapest(t_stack *stack);
 // push_swap commands
@@ -66,6 +68,7 @@ int		ft_lstget_max(t_stack *stack);
 t_stack	*ft_lstbfr_last(t_stack *stack);
 int		ft_lstget_min(t_stack *stack);
 t_stack	*ft_lstget_minnode(t_stack *stack);
+t_stack	*ft_lstget_maxnode(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
 // lst_management
 t_stack	*lst_new(int data, int index);
@@ -86,4 +89,7 @@ void	check_input(char **strs, int i);
 int		is_many(char *str, char c);
 t_stack	*init_stack(char **numbers, int i);
 
+// stack_a_managment
+void    manage_stack_a(t_stack **A, t_stack **B);
+t_stack *ft_lstget_median(t_stack *stack);
 #endif

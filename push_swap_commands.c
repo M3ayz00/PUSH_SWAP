@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/02/02 02:45:10 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:03:02 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ void	move_nodes(t_stack **A, t_stack **B)
 	t_stack	*cheapest;
 
 	cheapest = get_cheapest(*B);
-	// printf("cheapest's data : %d and its push cost %d\n", cheapest->data, cheapest->push_cost);
 	if (cheapest->above_median == 1 && cheapest->target->above_median == 1)
-		rotate_both(A, B, cheapest);
+		rotate_both_b(A, B, cheapest);
 	else if (cheapest->above_median == 0 && cheapest->target->above_median == 0)
-		r_rotate_both(A, B, cheapest);
+		r_rotate_both_b(A, B, cheapest);
 	last_rotations(B, cheapest, 'b');
 	last_rotations(A, cheapest->target, 'a');
 	push(B, A, "pa");
@@ -128,6 +127,8 @@ void	push_to_b(t_stack **A, t_stack **B)
 	len_a = ft_lstsize(*A);
 	while (len_a-- > 3)
 	{
+		if(ft_islst_sorted(A))
+			break ;
 		if((*A)->data < median->data)
 			push(A, B, "pb");
 		else
@@ -142,8 +143,7 @@ void	push_swap(t_stack **A, t_stack **B)
 {
 	t_stack	*min;
 
-	push_to_b(A, B);
-	sort_3(A);
+	manage_stack_a(A, B);
 	while (B && *B)
 	{
 		init_nodes(*A, *B);
