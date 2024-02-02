@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:20:49 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/01/11 12:47:40 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/02 02:01:48 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ void	check_input(char **strs, int i)
 				if (strs[i][j] == '-' || strs[i][j] == '+')
 					j++;
 				if (strs[i][j] == '-' || strs[i][j] == '+')
-					ft_perror(1, "Error : double signs.\n");
+					ft_perror(1, "Error\n");
 				if (!ft_isdigit(strs[i][j]))
-					ft_perror(1, "Error : Invalid input (int).\n");
+					ft_perror(1, "Error\n");
 				j++;
 			}
 			i++;
 		}
 	}
 	else
-		ft_perror(1, "Error : No duplicates allowed\n");
+		ft_perror(1, "Error\n");
 }
 
 int	is_many(char *str, char c)

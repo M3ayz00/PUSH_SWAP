@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/01/11 12:57:08 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/02 02:01:57 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	ft_atoi(const char *str)
 	while (ft_isdigit(str[i]))
 		result = result * 10 + str[i++] - '0';
 	if (result > INT_MAX)
-		ft_perror(1, "Error : value greater than INT MAX.\n");
+		ft_perror(1, "Error\n");
 	return (result * sign);
 }

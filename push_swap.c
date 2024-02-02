@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/11 13:09:58 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:41:12 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	numbers = av;
 	i = 1;
 	if(ac == 1 || (ac == 2 && !av[1][0]))
-		ft_perror(1, "Error : 0 provided arguments.\n");
+		ft_perror(1, "Error\n");
 	if(ac == 2)
 	{
 		if(is_many(av[1], ' '))
@@ -52,5 +52,4 @@ int	main(int ac, char **av)
 		}
 		ft_lstclear(&head);
 	}
-	// system("Leaks ./push_swap");
 }

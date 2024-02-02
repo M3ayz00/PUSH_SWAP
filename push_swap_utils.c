@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/11 13:08:04 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/02 00:03:14 by m3ayz00          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,33 @@ void	update_position(t_stack *stack)
 	}
 }
 
-void	set_push_cost(t_stack *A, t_stack *B)
+void set_push_cost(t_stack *A, t_stack *B)
 {
-	while (B)
-	{
-		B->push_cost = 0;
-		if (B->target)
-		{
-			if (B->above_median == 0)
-				B->push_cost = ft_lstsize(B) - B->index;
-			if (B->target->above_median == 1)
-				B->push_cost += B->target->index ;
-			else
-				B->push_cost += ft_lstsize(A) - B->target->index;
-		}
-		B = B->next;
-	}
+	t_stack *currB = B;
+    while (currB)
+    {
+        currB->push_cost = 0;
+
+        if (currB->target)
+        {
+            int targetIndex = currB->target->index;
+            int bSize = ft_lstsize(B);
+            int aSize = ft_lstsize(A);
+            if (currB->above_median == 0)
+                currB->push_cost = bSize - currB->index;
+            else
+                currB->push_cost = currB->index;
+
+            if (currB->target->above_median == 1)
+                currB->push_cost += targetIndex;
+            else
+                currB->push_cost += aSize - targetIndex;
+        }
+
+        currB = currB->next;
+    }
 }
+
 
 void	set_target_node(t_stack *A, t_stack *B)
 {
