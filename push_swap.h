@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/02 16:59:33 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:43:13 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	rotate_both_b(t_stack **A, t_stack **B, t_stack *cheapest);
 void	r_rotate_both_b(t_stack **A, t_stack **B, t_stack *cheapest);
 // push_swap_utils_b
 void	set_target_node(t_stack *A, t_stack *B);
+void	set_target_nodea(t_stack *A, t_stack *B);
 void	set_push_cost(t_stack *A, t_stack *B);
 void	last_rotations(t_stack **stack, t_stack *top, char c);
 void	update_position(t_stack *stack);
@@ -57,6 +58,7 @@ void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
 void	init_nodes(t_stack *A, t_stack *B);
 void	move_nodes(t_stack **A, t_stack **B);
+
 // string operations
 int		ft_atoi(const char *str);
 int		ft_strcmp(char *s1, char *s2);

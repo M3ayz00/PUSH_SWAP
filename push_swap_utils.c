@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_b.c                                :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/02 16:58:18 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/03 16:42:37 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,33 @@ void	set_target_node(t_stack *A, t_stack *B)
 			curr = curr->next;
 		}
 		if (match == LONG_MAX)
+			B->target = ft_lstget_minnode(A);
+		else
+			B->target = target;
+		B = B->next;
+	}
+}
+
+void	set_target_nodea(t_stack *A, t_stack *B)
+{
+	t_stack	*curr;
+	t_stack	*target;
+	long	match;
+
+	while (B)
+	{
+		curr = A;
+		match = LONG_MIN;
+		while (curr)
+		{
+			if (curr->data < B->data && curr->data > match)
+			{
+				match = curr->data;
+				target = curr;
+			}
+			curr = curr->next;
+		}
+		if (match == LONG_MIN)
 			B->target = ft_lstget_minnode(A);
 		else
 			B->target = target;
