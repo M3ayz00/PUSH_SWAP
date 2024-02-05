@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/03 16:43:13 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:59:02 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,41 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*target;
 }	t_stack;
+
 // operations1
 void	swap_data(int *a, int *b);
 void	swap(t_stack **B, char *op);
 void	push(t_stack **A, t_stack **B, char *op);
 void	rotate(t_stack **stack, char *op);
 void	r_rotate(t_stack **stack, char *op);
+
 // operations2
 void	swap_s(t_stack **A, t_stack **B, char *op);
 void	rotate_s(t_stack **A, t_stack **B, char *op);
 void	r_rotate_s(t_stack **A, t_stack **B, char *op);
-void	rotate_both_a(t_stack **A, t_stack **B, t_stack *cheapest);
-void	r_rotate_both_a(t_stack **A, t_stack **B, t_stack *cheapest);
-void	rotate_both_b(t_stack **A, t_stack **B, t_stack *cheapest);
-void	r_rotate_both_b(t_stack **A, t_stack **B, t_stack *cheapest);
-// push_swap_utils_b
+void	rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
+void	r_rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
+
+// push_swap_utils
 void	set_target_node(t_stack *A, t_stack *B);
-void	set_target_nodea(t_stack *A, t_stack *B);
 void	set_push_cost(t_stack *A, t_stack *B);
 void	last_rotations(t_stack **stack, t_stack *top, char c);
 void	update_position(t_stack *stack);
 t_stack	*get_cheapest(t_stack *stack);
+
+// push_swap_utils2
+void	push_lower_nodes(t_stack **A, t_stack **B, t_stack *median, int *iterations);
+void	push_middle_nodes(t_stack **A, t_stack **B, t_stack *median, int *iterations);
+void	init_nodes(t_stack *A, t_stack *B);
+void	move_nodes(t_stack **A, t_stack **B);
+void	min_go_up(t_stack **A);
+
 // push_swap commands
 void	push_swap(t_stack **A, t_stack **B);
 void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
-void	init_nodes(t_stack *A, t_stack *B);
-void	move_nodes(t_stack **A, t_stack **B);
+void	push_a_to_b(t_stack **A, t_stack **B);
+void	push_b_to_a(t_stack **A, t_stack **B);
 
 // string operations
 int		ft_atoi(const char *str);
@@ -65,33 +73,41 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_intcmp(int a, int b);
 int		ft_isdigit(int c);
 void	ft_perror(int e, char *err);
+
 // lst search
 int		ft_lstget_max(t_stack *stack);
 t_stack	*ft_lstbfr_last(t_stack *stack);
 int		ft_lstget_min(t_stack *stack);
 t_stack	*ft_lstget_minnode(t_stack *stack);
-t_stack	*ft_lstget_maxnode(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
+
 // lst_management
 t_stack	*lst_new(int data, int index);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 int		ft_lstsize(t_stack *lst);
 void	ft_lstclear(t_stack **lst);
 int		ft_islst_sorted(t_stack **stack);
+
 // ft_put_in_fd
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
+
 // ft_split
 int		ft_wordcount(const char *s, char c);
 char	**ft_split(char const *s, char c);
+
 // check_errors
 int		check_dups(char **strs, int i);
 void	check_input(char **strs, int i);
 int		is_many(char *str, char c);
 t_stack	*init_stack(char **numbers, int i);
 
-// stack_a_managment
-void    manage_stack_a(t_stack **A, t_stack **B);
+// sorting_utils
 t_stack *ft_lstget_median(t_stack *stack);
+int		partitions(int *arr, int start, int end);
+void    quicksort(int *arr, int start, int end);
+int		*list_to_arr(t_stack *stack);
+t_stack *ft_lstget_median(t_stack *stack);
+
 #endif

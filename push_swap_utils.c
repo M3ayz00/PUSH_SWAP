@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/03 16:42:37 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:38:46 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,26 @@ void	update_position(t_stack *stack)
 
 void set_push_cost(t_stack *A, t_stack *B)
 {
-	t_stack *currB = B;
+	int bSize;
+	int aSize;
+	t_stack *currB;
+
+	currB = B;
+	bSize = ft_lstsize(B);
+	aSize = ft_lstsize(A);
     while (currB)
     {
-        currB->push_cost = 0;
-
-        if (currB->target)
-        {
-            int targetIndex = currB->target->index;
-            int bSize = ft_lstsize(B);
-            int aSize = ft_lstsize(A);
-            if (currB->above_median == 0)
-                currB->push_cost = bSize - currB->index;
-            else
-                currB->push_cost = currB->index;
-
-            if (currB->target->above_median == 1)
-                currB->push_cost += targetIndex;
-            else
-                currB->push_cost += aSize - targetIndex;
-        }
-
+		if (currB->above_median == 0)
+			currB->push_cost = bSize - currB->index;
+		else
+			currB->push_cost = currB->index;
+		if (currB->target->above_median == 1)
+			currB->push_cost += currB->target->index;
+		else
+			currB->push_cost += aSize - currB->target->index;
         currB = currB->next;
     }
 }
-
 
 void	set_target_node(t_stack *A, t_stack *B)
 {
@@ -98,33 +93,6 @@ void	set_target_node(t_stack *A, t_stack *B)
 			curr = curr->next;
 		}
 		if (match == LONG_MAX)
-			B->target = ft_lstget_minnode(A);
-		else
-			B->target = target;
-		B = B->next;
-	}
-}
-
-void	set_target_nodea(t_stack *A, t_stack *B)
-{
-	t_stack	*curr;
-	t_stack	*target;
-	long	match;
-
-	while (B)
-	{
-		curr = A;
-		match = LONG_MIN;
-		while (curr)
-		{
-			if (curr->data < B->data && curr->data > match)
-			{
-				match = curr->data;
-				target = curr;
-			}
-			curr = curr->next;
-		}
-		if (match == LONG_MIN)
 			B->target = ft_lstget_minnode(A);
 		else
 			B->target = target;
