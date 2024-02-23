@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/02/05 17:58:48 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:45:36 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void push_a_to_b(t_stack **A, t_stack **B)
 		push_middle_nodes(A, B, median, &iterations);
 		curr_top = *A;
 		size = ft_lstsize(curr_top);
-	} 
+	}
 	sort_3(A);
 }
 

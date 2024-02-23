@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/05 17:59:02 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:38:59 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ typedef struct s_stack
 	int				data;
 	int				above_median;
 	int				push_cost;
+	int				rotate_cost;
 	struct s_stack	*next;
 	struct s_stack	*target;
 }	t_stack;
+
+
 
 // operations1
 void	swap_data(int *a, int *b);
@@ -109,5 +112,8 @@ int		partitions(int *arr, int start, int end);
 void    quicksort(int *arr, int start, int end);
 int		*list_to_arr(t_stack *stack);
 t_stack *ft_lstget_median(t_stack *stack);
+
+
+void	push_max(t_stack **A,t_stack **B);
 
 #endif

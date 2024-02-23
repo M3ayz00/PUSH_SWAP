@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:43:12 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/05 17:58:53 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:50:18 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,35 @@ void push_lower_nodes(t_stack **A, t_stack **B, t_stack *median, int *iterations
 		(*iterations)--;
 	}
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+void	optimal_moves(t_stack **A, t_stack *median)
+{
+	t_stack	*head;
+
+	update_position(*A);
+	head = *A;
+	while (head && head->data >= median->data)
+			head = head->next;
+	if (head->above_median)
+		rotate(A, "ra");
+	else
+		r_rotate(A, "rra");
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void push_middle_nodes(t_stack **A, t_stack **B, t_stack *median, int *iterations)
 {
 	while (*iterations > 0)
 	{
-		if ((*A)->data >= median->data)
-			rotate(A, "ra");
-		else if ((*A)->data < median->data)
+		if ((*A)->data < median->data)
 		{
 			push(A, B, "pb");
 			(*iterations)--;
 		}
+		else
+			optimal_moves(A, median);
 	}
 }
-
 void	init_nodes(t_stack *A, t_stack *B)
 {
 	update_position(A);
