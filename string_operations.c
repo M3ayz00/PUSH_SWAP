@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/02/02 02:01:57 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/03/27 23:31:00 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,30 @@ int	ft_intcmp(int a, int b)
 
 void	ft_perror(int e, char *err)
 {
+	system("leaks --fullStacks push_swap");
 	ft_putstr_fd(err, 2);
 	exit(e);
 }
 
-int	ft_atoi(const char *str)
+t_atoi	ft_atoi(const char *str)
 {
 	int		i;
-	int		sign;
-	size_t	result;
+	t_atoi	atoi;
 
 	i = 0;
-	result = 0;
-	sign = 1;
+	atoi.result = 0;
+	atoi.sign = 1;
+	atoi.flag = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign = -1;
+			atoi.sign = -1;
 		i++;
 	}
 	while (ft_isdigit(str[i]))
-		result = result * 10 + str[i++] - '0';
-	if (result > INT_MAX)
-		ft_perror(1, "Error\n");
-	return (result * sign);
+		atoi.result = atoi.result * 10 + str[i++] - '0';
+	if (atoi.result > INT_MAX)
+		atoi.flag = 1;
+	atoi.result *= atoi.sign;
+	return (atoi);
 }

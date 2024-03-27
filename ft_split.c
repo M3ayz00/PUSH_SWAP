@@ -6,94 +6,98 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:30 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/01/11 12:41:46 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:00:34 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_wordlen(char const *s, char c)
+static int	is_c_in_str(char c, char *str)
 {
 	int	i;
 
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
-}
-
-int	ft_wordcount(char const *s, char c)
-{
-	int	i;
-	int	w;
-
-	w = 0;
-	while (*s)
+	i = -1;
+	while (str[++i])
 	{
-		while (*s && *s == c)
-			s++;
-		i = ft_wordlen(s, c);
-		s += i;
-		if (i)
-			w++;
+		if (str[i] == c)
+			return (1);
 	}
-	return (w);
-}
-
-static char	*ft_wordcpy(char const *src, int n)
-{
-	char	*dest;
-
-	dest = malloc((n + 1) * sizeof(char));
-	if (!dest)
-		return (0);
-	dest[n] = '\0';
-	while (n--)
-		dest[n] = src[n];
-	return (dest);
-}
-
-static char	**ft_free(char **str, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		free(str[i]);
-		str[i] = NULL;
-		i++;
-	}
-	free(str);
-	str = NULL;
 	return (0);
 }
 
-char	**ft_split(char const *s, char c)
+static char	*word(char *s, char *set, int j)
 {
-	char	**t;
-	int		size;
+	char	*word;
 	int		i;
-	int		n;
+
+	i = 0;
+	while (s[j] && !is_c_in_str(s[j], set))
+	{
+		i++;
+		j++;
+	}
+	word = (char *)ft_calloc(i + 1, sizeof(char));
+	if (!word)
+		return (NULL);
+	j -= i;
+	i = 0;
+	while (!is_c_in_str(s[j], set) && s[j])
+		word[i++] = s[j++];
+	return (word);
+}
+
+static size_t	count_words(char *s, char *set)
+{
+	size_t	count;
+
+	count = 0;
+	while (*s)
+	{
+		while (is_c_in_str(*s, set))
+			s++;
+		if (*s)
+			count++;
+		while (*s && !is_c_in_str(*s, set))
+			s++;
+	}
+	return (count);
+}
+
+static void	free_all(char **strs, int i)
+{
+	while (i >= 0)
+	{
+		free(strs[i]);
+		i--;
+	}
+	free(strs);
+}
+
+char	**ft_split(char *s, char *set)
+{
+	char	**strings;
+	int		i;
+	int		j;
+	int		count;
 
 	if (!s)
-		return (0);
-	size = ft_wordcount(s, c);
-	t = malloc((size + 1) * sizeof(char *));
-	if (!t)
-		return (0);
-	i = -1;
-	while (++i < size)
+		return (NULL);
+	count = count_words(s, set);
+	if (count == 0)
+		return (NULL);
+	strings = (char **)ft_calloc(count + 1, sizeof(char *));
+	if (!strings)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		while (*s && *s == c)
-			s++;
-		n = ft_wordlen(s, c);
-		if (*s)
-			t[i] = ft_wordcpy(s, n);
-		if (!t[i])
-			return (ft_free(t, i));
-		s += n;
+		if (is_c_in_str(s[i], set) && s[i++])
+			continue ;
+		strings[j] = word(s, set, i);
+		if (strings[j] == NULL)
+			return (free_all(strings, j), NULL);
+		i += ft_strlen(strings[j++]);
 	}
-	t[size] = 0;
-	return (t);
+	return (strings);
 }

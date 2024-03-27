@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/02/23 15:45:36 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:26:53 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ void	push_b_to_a(t_stack **A, t_stack **B)
 	}
 }
 
-void	push_swap(t_stack **A, t_stack **B)
+void	push_swap(t_stack **A)
 {
+	t_stack **B;
+
+	B = NULL;
 	push_a_to_b(A, B);
 	push_b_to_a(A, B);
 	update_position(*A);

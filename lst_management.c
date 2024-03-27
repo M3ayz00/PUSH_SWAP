@@ -6,13 +6,13 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:43:40 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/01/11 12:48:09 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:14:04 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*lst_new(int data, int index)
+t_stack	*lst_new(int data)
 {
 	t_stack	*lst;
 
@@ -22,7 +22,6 @@ t_stack	*lst_new(int data, int index)
 		free(lst);
 		return (NULL);
 	}
-	lst->index = index;
 	lst->data = data;
 	lst->next = NULL;
 	return (lst);

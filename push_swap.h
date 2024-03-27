@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/23 15:38:59 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/27 23:14:59 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # include <limits.h>
 # include <stddef.h>
 # include <stdint.h>
+
+typedef	struct	s_atoi
+{
+	
+	size_t	result;
+	int		sign;
+	int		flag;
+} t_atoi;
 
 typedef struct s_stack
 {
@@ -64,14 +72,14 @@ void	move_nodes(t_stack **A, t_stack **B);
 void	min_go_up(t_stack **A);
 
 // push_swap commands
-void	push_swap(t_stack **A, t_stack **B);
+void	push_swap(t_stack **A);
 void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
 void	push_a_to_b(t_stack **A, t_stack **B);
 void	push_b_to_a(t_stack **A, t_stack **B);
 
 // string operations
-int		ft_atoi(const char *str);
+t_atoi		ft_atoi(const char *str);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_intcmp(int a, int b);
 int		ft_isdigit(int c);
@@ -85,7 +93,7 @@ t_stack	*ft_lstget_minnode(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
 
 // lst_management
-t_stack	*lst_new(int data, int index);
+t_stack	*lst_new(int data);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 int		ft_lstsize(t_stack *lst);
 void	ft_lstclear(t_stack **lst);
@@ -97,14 +105,16 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
 // ft_split
-int		ft_wordcount(const char *s, char c);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *s, char *set);
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_calloc(size_t num_elements, size_t element_size);
+size_t	ft_strlen(char *str);
+
 
 // check_errors
-int		check_dups(char **strs, int i);
-void	check_input(char **strs, int i);
-int		is_many(char *str, char c);
-t_stack	*init_stack(char **numbers, int i);
+int		check_dups(t_stack *stack);
+int	check_input(char **strs);
+int	init_stack(char **numbers, t_stack **stack);
 
 // sorting_utils
 t_stack *ft_lstget_median(t_stack *stack);
@@ -114,6 +124,6 @@ int		*list_to_arr(t_stack *stack);
 t_stack *ft_lstget_median(t_stack *stack);
 
 
-void	push_max(t_stack **A,t_stack **B);
+// void	push_max(t_stack **A,t_stack **B);
 
 #endif

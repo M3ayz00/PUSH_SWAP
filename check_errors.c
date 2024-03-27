@@ -3,82 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m3ayz00 <m3ayz00@student.42.fr>            +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:20:49 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/02/02 02:01:48 by m3ayz00          ###   ########.fr       */
+/*   Updated: 2024/03/27 23:24:55 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_dups(char **strs, int i)
+int	check_dups(t_stack *stack)
 {
-	int	j;
+	t_stack	*curr1;
+	t_stack	*curr2;
 
-	while (strs[i])
+	curr1 = stack;
+	while (curr1)
 	{
-		j = i + 1;
-		while (strs[j])
+		curr2 = curr1->next;
+		while(curr2)
 		{
-			if (ft_intcmp(ft_atoi(strs[j]), ft_atoi(strs[i])) == 1)
+			if (ft_intcmp(curr1->data, curr2->data) == 1)
 				return (1);
-			j++;
+			curr2 = curr2->next;
 		}
-		i++;
+		curr1 = curr1->next;
 	}
 	return (0);
 }
 
-void	check_input(char **strs, int i)
+int	check_input(char **strs)
 {
 	int	j;
+	int	i;
 
-	if (check_dups(strs, i) == 0)
+	i = -1;
+	while (strs[++i])
 	{
-		while (strs[i])
+		j = -1;
+		while (strs[i][++j])
 		{
-			j = 0;
-			while (strs[i][j])
-			{
-				if (strs[i][j] == '-' || strs[i][j] == '+')
-					j++;
-				if (strs[i][j] == '-' || strs[i][j] == '+')
-					ft_perror(1, "Error\n");
-				if (!ft_isdigit(strs[i][j]))
-					ft_perror(1, "Error\n");
-				j++;
-			}
-			i++;
+			if (strs[i][j] == '-' || strs[i][j] == '+')
+				++j;
+			if (strs[i][j] == '-' || strs[i][j] == '+' || !ft_isdigit(strs[i][j]))
+				return (EXIT_FAILURE);
 		}
 	}
-	else
-		ft_perror(1, "Error\n");
+	return (EXIT_SUCCESS);
 }
 
-int	is_many(char *str, char c)
+int	init_stack(char **numbers, t_stack **stack)
 {
-	while (*str)
-	{
-		if (*str == c)
-			return (1);
-		str++;
-	}
-	return (0);
-}
+	int		i;
+	t_atoi	atoi;
 
-t_stack	*init_stack(char **numbers, int i)
-{
-	t_stack	*head;
-	int		j;
-
-	j = 0;
-	head = NULL;
-	while (numbers[i])
+	i = -1;
+	while (numbers[++i])
 	{
-		ft_lstadd_back(&head, lst_new(ft_atoi(numbers[i]), j));
-		j++;
-		i++;
+		atoi = ft_atoi(numbers[i]);
+		if (atoi.flag)
+			return (EXIT_FAILURE);
+		ft_lstadd_back(stack, lst_new(atoi.result));
 	}
-	return (head);
+	return (EXIT_SUCCESS);
 }
