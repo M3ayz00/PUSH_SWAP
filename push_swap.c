@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/27 23:19:53 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/27 23:37:34 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,8 @@ t_stack	*check_args(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	int		i;
 	t_stack	*head;
 
-	i = 1;
 	if(ac == 1)
 		ft_perror(1, NULL);
 	head = check_args(ac, av);
