@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:43:40 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/27 21:14:04 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:31:20 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_lstclear(t_stack **lst)
 	t_stack	*curr;
 	t_stack	*next;
 
-	if (!(lst && *lst))
+	if (!lst || !(*lst))
 		return ;
 	curr = *lst;
 	while (curr != NULL)

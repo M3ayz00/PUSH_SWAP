@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/27 23:37:34 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:29:40 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ void	free_strs(char **strs)
 {
 	int	i;
 
-	i = 0;
-	while (strs[i])
-	{
+	i = -1;
+	while (strs[++i])
+	{	
+		printf("%s\n", strs[i]);
 		free(strs[i]);
-		i++;
 	}
+	strs = NULL;
 	free(strs);
 }
 
@@ -80,9 +81,8 @@ t_stack	*check_args(int ac, char **av)
 			return (free_strs(tmp), ft_lstclear(&stack) ,NULL);
 		if (check_input(tmp))
 			return (free_strs(tmp), ft_lstclear(&stack) ,NULL);
-		if(init_stack(tmp, &stack))
-			return (free_strs(tmp), ft_lstclear(&stack) ,NULL);
-		free(tmp);
+		init_stack(tmp, &stack);
+		free_strs(tmp);
 	}
 	if (check_dups(stack))
 		return (ft_lstclear(&stack), NULL);
@@ -108,4 +108,5 @@ int	main(int ac, char **av)
 			push_swap(&head);
 	}
 	ft_lstclear(&head);
+	system("leaks --fullStacks push_swap");
 }

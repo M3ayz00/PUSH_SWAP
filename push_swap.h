@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/27 23:14:59 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:21:35 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@
 # include <stddef.h>
 # include <stdint.h>
 
-typedef	struct	s_atoi
-{
-	
-	size_t	result;
-	int		sign;
-	int		flag;
-} t_atoi;
 
 typedef struct s_stack
 {
@@ -79,7 +72,7 @@ void	push_a_to_b(t_stack **A, t_stack **B);
 void	push_b_to_a(t_stack **A, t_stack **B);
 
 // string operations
-t_atoi		ft_atoi(const char *str);
+int	ft_atoi(const char *str, char **numbers, t_stack **stack);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_intcmp(int a, int b);
 int		ft_isdigit(int c);
@@ -109,12 +102,14 @@ char	**ft_split(char *s, char *set);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t num_elements, size_t element_size);
 size_t	ft_strlen(char *str);
+void	free_strs(char **strs);
+
 
 
 // check_errors
 int		check_dups(t_stack *stack);
 int	check_input(char **strs);
-int	init_stack(char **numbers, t_stack **stack);
+void	init_stack(char **numbers, t_stack **stack);
 
 // sorting_utils
 t_stack *ft_lstget_median(t_stack *stack);

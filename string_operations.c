@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/27 23:31:00 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:20:52 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,24 @@ void	ft_perror(int e, char *err)
 	exit(e);
 }
 
-t_atoi	ft_atoi(const char *str)
+int	ft_atoi(const char *str, char **numbers, t_stack **stack)
 {
 	int		i;
-	t_atoi	atoi;
+	size_t	result;
+	int		sign;
 
 	i = 0;
-	atoi.result = 0;
-	atoi.sign = 1;
-	atoi.flag = 0;
+	result = 0;
+	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			atoi.sign = -1;
+			sign = -1;
 		i++;
 	}
 	while (ft_isdigit(str[i]))
-		atoi.result = atoi.result * 10 + str[i++] - '0';
-	if (atoi.result > INT_MAX)
-		atoi.flag = 1;
-	atoi.result *= atoi.sign;
-	return (atoi);
+		result = result * 10 + str[i++] - '0';
+	if (result >= INT_MAX)
+		return (free_strs(numbers), ft_lstclear(stack), ft_perror(1 ,"1Error\n"),0);
+	return (result * sign);
 }

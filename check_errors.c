@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:20:49 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/27 23:24:55 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:26:34 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,11 @@ int	check_input(char **strs)
 	return (EXIT_SUCCESS);
 }
 
-int	init_stack(char **numbers, t_stack **stack)
+void	init_stack(char **numbers, t_stack **stack)
 {
 	int		i;
-	t_atoi	atoi;
 
 	i = -1;
 	while (numbers[++i])
-	{
-		atoi = ft_atoi(numbers[i]);
-		if (atoi.flag)
-			return (EXIT_FAILURE);
-		ft_lstadd_back(stack, lst_new(atoi.result));
-	}
-	return (EXIT_SUCCESS);
+		ft_lstadd_back(stack, lst_new(ft_atoi(numbers[i],numbers, stack)));
 }
