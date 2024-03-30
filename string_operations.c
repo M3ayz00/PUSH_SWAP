@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/28 22:20:52 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/30 21:24:23 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_intcmp(int a, int b)
 
 void	ft_perror(int e, char *err)
 {
-	system("leaks --fullStacks push_swap");
+	// system("leaks --fullStacks push_swap");
 	ft_putstr_fd(err, 2);
 	exit(e);
 }
@@ -42,7 +42,7 @@ void	ft_perror(int e, char *err)
 int	ft_atoi(const char *str, char **numbers, t_stack **stack)
 {
 	int		i;
-	size_t	result;
+	int		result;
 	int		sign;
 
 	i = 0;
@@ -54,9 +54,14 @@ int	ft_atoi(const char *str, char **numbers, t_stack **stack)
 			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(str[i]))
-		result = result * 10 + str[i++] - '0';
-	if (result >= INT_MAX)
-		return (free_strs(numbers), ft_lstclear(stack), ft_perror(1 ,"1Error\n"),0);
-	return (result * sign);
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			result = result * 10 + str[i++] - '0';
+		else
+			return (free_strs(numbers), ft_lstclear(stack), ft_perror(1 ,"Error\n"),0);
+	}
+	if (result <= INT_MAX && result >= INT_MIN)
+		return (result * sign);
+	return (free_strs(numbers), ft_lstclear(stack), ft_perror(1 ,"Error\n"),0);
 }

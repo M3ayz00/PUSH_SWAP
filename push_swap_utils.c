@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/05 16:38:46 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/30 19:46:16 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	update_position(t_stack *stack)
 	int	i;
 	int	median;
 
+	if (!stack)
+		return ;
 	i = 0;
 	median = ft_lstsize(stack) / 2;
 	while (stack)

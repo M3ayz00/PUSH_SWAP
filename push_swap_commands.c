@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/27 21:26:53 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/30 20:49:56 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void push_a_to_b(t_stack **A, t_stack **B)
 	int iterations;
 	while (size > 3)
 	{
-		iterations = size / 2;
+		iterations = size / 2 - 1;
 		median = ft_lstget_median(curr_top);
 		push_lower_nodes(A, B, median, &iterations);
 		push_middle_nodes(A, B, median, &iterations);
@@ -60,11 +60,11 @@ void	push_b_to_a(t_stack **A, t_stack **B)
 
 void	push_swap(t_stack **A)
 {
-	t_stack **B;
+	t_stack *B;
 
 	B = NULL;
-	push_a_to_b(A, B);
-	push_b_to_a(A, B);
+	push_a_to_b(A, &B);
+	push_b_to_a(A, &B);
 	update_position(*A);
 	min_go_up(A);
 }
