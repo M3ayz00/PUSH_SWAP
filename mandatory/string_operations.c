@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/30 21:24:23 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/31 21:39:18 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,22 @@ int	ft_isdigit(int c)
 	return (c >= '0' && c <= '9');
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*ss1;
+	unsigned char	*ss2;
 
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
 	i = 0;
-	while ((s1[i] || s2[i]) && s1[i] == s2[i])
+	while (i < n)
+	{
+		if (ss1[i] != ss2[i])
+			return (ss1[i] - ss2[i]);
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (0);
 }
 
 int	ft_intcmp(int a, int b)
@@ -34,7 +42,7 @@ int	ft_intcmp(int a, int b)
 
 void	ft_perror(int e, char *err)
 {
-	// system("leaks --fullStacks push_swap");
+	system("leaks checker");
 	ft_putstr_fd(err, 2);
 	exit(e);
 }

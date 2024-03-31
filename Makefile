@@ -6,28 +6,62 @@
 #    By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:29:04 by msaadidi          #+#    #+#              #
-#    Updated: 2024/03/27 22:04:13 by msaadidi         ###   ########.fr        #
+#    Updated: 2024/03/31 21:24:51 by msaadidi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+BNAME = checker
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
-SRCS = sorting_utils.c check_errors.c lst_search.c lst_management.c put_in_fd.c ft_split.c operations_1.c operations_2.c push_swap_commands.c push_swap_utils.c push_swap_utils2.c push_swap.c string_operations.c
+SRCS = mandatory/sorting_utils.c \
+		mandatory/check_errors.c \
+		mandatory/parsing.c \
+		mandatory/lst_search.c \
+		mandatory/lst_management.c \
+		mandatory/put_in_fd.c \
+		mandatory/ft_split.c \
+		mandatory/operations_1.c \
+		mandatory/operations_2.c \
+		mandatory/push_swap_commands.c \
+		mandatory/push_swap_utils.c \
+		mandatory/push_swap_utils2.c \
+		mandatory/push_swap.c \
+		mandatory/string_operations.c \
+		bonus/get_next_line_utils.c \
+
+BONUS = mandatory/check_errors.c \
+		mandatory/lst_management.c \
+		mandatory/ft_split.c \
+		mandatory/parsing.c \
+		mandatory/string_operations.c \
+		mandatory/operations_1.c \
+		mandatory/operations_2.c \
+		mandatory/lst_search.c \
+		mandatory/put_in_fd.c \
+		mandatory/push_swap_utils.c \
+		bonus/checker.c \
+		bonus/get_next_line.c \
+		bonus/get_next_line_utils.c \
 
 OBJS = $(SRCS:.c=.o)
+BOBJS = $(BONUS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+	@make clean
+	
+bonus : $(BOBJS)
+	$(CC) $(CFLAGS) $(BOBJS) -o $(BNAME)
 	@make clean
 
 clean : 
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(BOBJS)
 
 fclean : clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BNAME)
 
 re : fclean all
 

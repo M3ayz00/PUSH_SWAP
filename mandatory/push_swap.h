@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/28 22:21:35 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/31 21:16:25 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <limits.h>
 # include <stddef.h>
 # include <stdint.h>
-
+# include "../bonus/get_next_line.h"
 
 typedef struct s_stack
 {
@@ -72,8 +72,8 @@ void	push_a_to_b(t_stack **A, t_stack **B);
 void	push_b_to_a(t_stack **A, t_stack **B);
 
 // string operations
-int	ft_atoi(const char *str, char **numbers, t_stack **stack);
-int		ft_strcmp(char *s1, char *s2);
+int		ft_atoi(const char *str, char **numbers, t_stack **stack);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 int		ft_intcmp(int a, int b);
 int		ft_isdigit(int c);
 void	ft_perror(int e, char *err);
@@ -101,7 +101,6 @@ void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char *s, char *set);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t num_elements, size_t element_size);
-size_t	ft_strlen(char *str);
 void	free_strs(char **strs);
 
 
@@ -120,5 +119,8 @@ t_stack *ft_lstget_median(t_stack *stack);
 
 
 // void	push_max(t_stack **A,t_stack **B);
+
+t_stack	*check_args(int ac, char **av);
+
 
 #endif

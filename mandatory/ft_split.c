@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:30 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/27 21:00:34 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/03/31 21:45:01 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static size_t	count_words(char *s, char *set)
 
 static void	free_all(char **strs, int i)
 {
-	while (i >= 0)
+	while (strs && i >= 0)
 	{
 		free(strs[i]);
 		i--;
