@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/31 21:16:25 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:10:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_stack
 {
 	int				index;
+	int				arr_index;
 	int				data;
 	int				above_median;
 	int				push_cost;
@@ -65,7 +66,7 @@ void	move_nodes(t_stack **A, t_stack **B);
 void	min_go_up(t_stack **A);
 
 // push_swap commands
-void	push_swap(t_stack **A);
+void	push_swap(t_stack **A, int chunksize);
 void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
 void	push_a_to_b(t_stack **A, t_stack **B);

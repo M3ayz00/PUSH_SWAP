@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/31 21:39:18 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:12:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_intcmp(int a, int b)
 
 void	ft_perror(int e, char *err)
 {
-	system("leaks checker");
+	system(" checker");
 	ft_putstr_fd(err, 2);
 	exit(e);
 }

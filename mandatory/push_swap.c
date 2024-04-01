@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 21:07:47 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/31 21:08:01 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:14:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ int	main(int ac, char **av)
 	if (!head)
 		ft_perror(1, "Error\n");
 	if(!ft_islst_sorted(&head))
-	{		
+	{
 		if(ft_lstsize(head) == 2)
 			sort_2(&head);
 		else if(ft_lstsize(head) == 3)
 			sort_3(&head);
-		else if (ft_lstsize(head) > 3)
-			push_swap(&head);
+		else if (ft_lstsize(head) <= 100)
+			push_swap(&head, 15);
+		else if (ft_lstsize(head) > 100)
+			push_swap(&head, 30);
 	}
 	ft_lstclear(&head);
 }

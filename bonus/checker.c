@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:45:51 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/31 21:41:24 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:12:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int main(int ac, char **av)
         ft_putendl_fd("KO", 1);
     ft_lstclear(&A);
     ft_lstclear(&B);
-    system("leaks checker");
+    //system("leaks checker");
 }

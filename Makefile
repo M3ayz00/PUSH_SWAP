@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:29:04 by msaadidi          #+#    #+#              #
-#    Updated: 2024/03/31 21:24:51 by msaadidi         ###   ########.fr        #
+#    Updated: 2024/04/01 17:12:08 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ BNAME = checker
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
 SRCS = mandatory/sorting_utils.c \
+		mandatory/test.c \
 		mandatory/check_errors.c \
 		mandatory/parsing.c \
 		mandatory/lst_search.c \

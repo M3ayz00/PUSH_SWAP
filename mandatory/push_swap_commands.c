@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/03/30 20:49:56 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:11:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	push_b_to_a(t_stack **A, t_stack **B)
 	}
 }
 
-void	push_swap(t_stack **A)
-{
-	t_stack *B;
-
-	B = NULL;
-	push_a_to_b(A, &B);
-	push_b_to_a(A, &B);
-	update_position(*A);
-	min_go_up(A);
-}
+//void	push_swap(t_stack **A)
+//{
+//	t_stack *B;
+//
+//	B = NULL;
+//	push_a_to_b(A, &B);
+//	push_b_to_a(A, &B);
+//	update_position(*A);
+//	min_go_up(A);
+//}
