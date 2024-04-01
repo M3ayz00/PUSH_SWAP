@@ -6,10 +6,9 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:34:03 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/31 21:16:06 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:09:14 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H

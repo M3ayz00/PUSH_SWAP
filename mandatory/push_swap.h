@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 17:10:08 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 21:41:33 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct s_stack
 	struct s_stack	*target;
 }	t_stack;
 
-
-
 // operations1
 void	swap_data(int *a, int *b);
 void	swap(t_stack **B, char *op);
@@ -52,25 +50,13 @@ void	rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
 void	r_rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
 
 // push_swap_utils
-void	set_target_node(t_stack *A, t_stack *B);
-void	set_push_cost(t_stack *A, t_stack *B);
 void	last_rotations(t_stack **stack, t_stack *top, char c);
 void	update_position(t_stack *stack);
-t_stack	*get_cheapest(t_stack *stack);
-
-// push_swap_utils2
-void	push_lower_nodes(t_stack **A, t_stack **B, t_stack *median, int *iterations);
-void	push_middle_nodes(t_stack **A, t_stack **B, t_stack *median, int *iterations);
-void	init_nodes(t_stack *A, t_stack *B);
-void	move_nodes(t_stack **A, t_stack **B);
-void	min_go_up(t_stack **A);
 
 // push_swap commands
 void	push_swap(t_stack **A, int chunksize);
 void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
-void	push_a_to_b(t_stack **A, t_stack **B);
-void	push_b_to_a(t_stack **A, t_stack **B);
 
 // string operations
 int		ft_atoi(const char *str, char **numbers, t_stack **stack);
@@ -82,8 +68,6 @@ void	ft_perror(int e, char *err);
 // lst search
 int		ft_lstget_max(t_stack *stack);
 t_stack	*ft_lstbfr_last(t_stack *stack);
-int		ft_lstget_min(t_stack *stack);
-t_stack	*ft_lstget_minnode(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
 
 // lst_management
@@ -104,24 +88,17 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t num_elements, size_t element_size);
 void	free_strs(char **strs);
 
-
-
 // check_errors
 int		check_dups(t_stack *stack);
-int	check_input(char **strs);
+int		check_input(char **strs);
 void	init_stack(char **numbers, t_stack **stack);
 
 // sorting_utils
-t_stack *ft_lstget_median(t_stack *stack);
-int		partitions(int *arr, int start, int end);
-void    quicksort(int *arr, int start, int end);
 int		*list_to_arr(t_stack *stack);
-t_stack *ft_lstget_median(t_stack *stack);
-
 
 // void	push_max(t_stack **A,t_stack **B);
-
 t_stack	*check_args(int ac, char **av);
-
+void	push_to_b(t_stack **a, t_stack **b, int chunksize);
+void	push_to_a(t_stack **a, t_stack **b);
 
 #endif

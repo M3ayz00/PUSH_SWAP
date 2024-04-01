@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:54:25 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/04/01 20:34:10 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:13:53 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	sort_3(t_stack **stack)
 		swap(stack, "sa");
 }
 
-void    push_swap(t_stack **a, int chunksize)
+void	push_swap(t_stack **a, int chunksize)
 {
-    t_stack *b;
+	t_stack	*b;
 
-    b = NULL;
-    push_to_b(a, &b, chunksize);
-    push_to_a(a, &b);
+	b = NULL;
+	push_to_b(a, &b, chunksize);
+	push_to_a(a, &b);
 }

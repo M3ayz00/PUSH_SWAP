@@ -6,56 +6,96 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:39:50 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 20:33:06 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:35:45 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int partitions(int *arr, int start, int end)
+int	*sort_int_tab(int *arr, int size)
 {
-    int pivot = arr[end];
-    int j = start;
-    int i = start - 1;
-    while(j <= end)
-    {
-        if(arr[j] < pivot)
-        {
-            i++;
-            int temp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
-        }
-        j++;
-    }
-    i++;
-    int temp = arr[i];
-    arr[i] = arr[end];
-    arr[end] = temp;
-    return (i);
+	int	i;
+	int	j;
+	int	temp;
+
+	i = -1;
+	while (++i < size)
+	{
+		j = -1;
+		while (++j < size)
+		{
+			if (arr[i] < arr[j])
+			{
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+	return (arr);
 }
 
-void    quicksort(int *arr, int start, int end)
+int	*list_to_arr(t_stack *stack)
 {
-    if (start >= end)
-        return ;
-    int pivot = partitions(arr, start, end);
-    quicksort(arr, start, pivot - 1);
-    quicksort(arr, pivot + 1 , end);
+	int	*arr;
+	int	i;
+	int	size;
+
+	size = ft_lstsize(stack);
+	arr = (int *)malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (stack)
+	{
+		arr[i] = stack->data;
+		i++;
+		stack = stack->next;
+	}
+	return (sort_int_tab(arr, size));
 }
 
-int *list_to_arr(t_stack *stack)
+void	update_position(t_stack *stack)
 {
-    int *arr = (int *)malloc(sizeof(int) * ft_lstsize(stack));
-    int i = 0;
-    int size = ft_lstsize(stack);
-    while(stack)
-    {
-        arr[i] = stack->data;
-        i++;
-        stack = stack->next;
-    }
-    quicksort(arr, 0, size - 1);
-    return (arr);
+	int	i;
+	int	median;
+
+	if (!stack)
+		return ;
+	i = 0;
+	median = ft_lstsize(stack) / 2;
+	while (stack)
+	{
+		stack->index = i;
+		if (i <= median)
+			stack->above_median = 1;
+		else
+			stack->above_median = 0;
+		stack = stack->next;
+		i++;
+	}
 }
 
+void	last_rotations(t_stack **stack, t_stack *top, char c)
+{
+	if (!top)
+		return ;
+	update_position(*stack);
+	while (*stack != top)
+	{
+		if (c == 'a')
+		{
+			if (top->above_median == 1)
+				rotate(stack, "ra");
+			else
+				r_rotate(stack, "rra");
+		}
+		else if (c == 'b')
+		{
+			if (top->above_median == 1)
+				rotate(stack, "rb");
+			else
+				r_rotate(stack, "rrb");
+		}
+	}
+}

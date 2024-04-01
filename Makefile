@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:29:04 by msaadidi          #+#    #+#              #
-#    Updated: 2024/04/01 17:12:08 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/01 21:44:52 by msaadidi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = mandatory/sorting_utils.c \
 		mandatory/test.c \
-		mandatory/check_errors.c \
 		mandatory/parsing.c \
-		mandatory/lst_search.c \
 		mandatory/lst_management.c \
 		mandatory/put_in_fd.c \
 		mandatory/ft_split.c \
@@ -26,19 +24,17 @@ SRCS = mandatory/sorting_utils.c \
 		mandatory/operations_2.c \
 		mandatory/push_swap_commands.c \
 		mandatory/push_swap_utils.c \
-		mandatory/push_swap_utils2.c \
 		mandatory/push_swap.c \
 		mandatory/string_operations.c \
 		bonus/get_next_line_utils.c \
 
-BONUS = mandatory/check_errors.c \
-		mandatory/lst_management.c \
+BONUS =	mandatory/lst_management.c \
+		mandatory/sorting_utils.c \
 		mandatory/ft_split.c \
 		mandatory/parsing.c \
 		mandatory/string_operations.c \
 		mandatory/operations_1.c \
 		mandatory/operations_2.c \
-		mandatory/lst_search.c \
 		mandatory/put_in_fd.c \
 		mandatory/push_swap_utils.c \
 		bonus/checker.c \
@@ -56,7 +52,6 @@ $(NAME) : $(OBJS)
 	
 bonus : $(BOBJS)
 	$(CC) $(CFLAGS) $(BOBJS) -o $(BNAME)
-	@make clean
 
 clean : 
 	@rm -rf $(OBJS) $(BOBJS)

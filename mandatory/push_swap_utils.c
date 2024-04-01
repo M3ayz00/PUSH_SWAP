@@ -6,53 +6,38 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 20:32:42 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:35:34 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	update_position(t_stack *stack)
+int	ft_lstget_max(t_stack *stack)
 {
-	int	i;
-	int	median;
+	int	max;
 
-	if (!stack)
-		return ;
-	i = 0;
-	median = ft_lstsize(stack) / 2;
-	while (stack)
+	max = stack->data;
+	while (stack->next)
 	{
-		stack->index = i;
-		if (i <= median)
-			stack->above_median = 1;
-		else
-			stack->above_median = 0;
+		if (max < stack->next->data)
+			max = stack->next->data;
 		stack = stack->next;
-		i++;
 	}
+	return (max);
 }
 
-void	last_rotations(t_stack **stack, t_stack *top, char c)
+t_stack	*ft_lstbfr_last(t_stack *stack)
 {
-	if (!top)
-		return ;
-	update_position(*stack);
-	while (*stack != top)
-	{
-		if (c == 'a')
-		{
-			if (top->above_median == 1)
-				rotate(stack, "ra");
-			else
-				r_rotate(stack, "rra");
-		}
-		else if (c == 'b')
-		{
-			if (top->above_median == 1)
-				rotate(stack, "rb");
-			else
-				r_rotate(stack, "rrb");
-		}
-	}
+	if (!stack || !stack->next)
+		return (NULL);
+	while (stack->next->next)
+		stack = stack->next;
+	return (stack);
+}
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	while (lst && lst->next)
+		lst = lst->next;
+	return (lst);
 }
