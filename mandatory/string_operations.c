@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/04/01 21:51:03 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:45:51 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_perror(int e, char *err)
 int	ft_atoi(const char *str, char **numbers, t_stack **stack)
 {
 	int		i;
-	int		result;
+	long	result;
 	int		sign;
 
 	i = 0;
