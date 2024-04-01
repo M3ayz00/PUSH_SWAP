@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_sort_andget_median.c                           :+:      :+:    :+:   */
+/*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:39:50 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/02/05 16:40:06 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:33:06 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,3 @@ int *list_to_arr(t_stack *stack)
     return (arr);
 }
 
-t_stack *ft_lstget_median(t_stack *stack)
-{
-    int *arr = list_to_arr(stack);
-    int size = ft_lstsize(stack);
-    int median = arr[size / 2];
-    while(stack)
-    {
-        if (stack->data == median)
-		{
-    		free(arr);
-            return (stack);
-		}
-        stack = stack->next;
-    }
-	free(arr);
-    return (NULL);
-}

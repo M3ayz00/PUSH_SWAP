@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/03/31 21:47:18 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/01 19:47:20 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,5 @@ t_stack	*check_args(int ac, char **av)
 	return (stack);
 }
 
-// void	print_list(t_stack *head)
-// {
-// 	t_stack *curr = head;
-// 	while (curr)
-// 	{
-// 		printf("%d\n", curr->data);
-// 		curr = curr->next;
-// 	}
-// }
+
 
