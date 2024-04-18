@@ -6,7 +6,7 @@
 #    By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:29:04 by msaadidi          #+#    #+#              #
-#    Updated: 2024/04/01 21:44:52 by msaadidi         ###   ########.fr        #
+#    Updated: 2024/04/18 02:03:57 by msaadidi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BNAME = checker
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
 SRCS = mandatory/sorting_utils.c \
-		mandatory/test.c \
+		mandatory/algo.c \
 		mandatory/parsing.c \
 		mandatory/lst_management.c \
 		mandatory/put_in_fd.c \
@@ -52,6 +52,7 @@ $(NAME) : $(OBJS)
 	
 bonus : $(BOBJS)
 	$(CC) $(CFLAGS) $(BOBJS) -o $(BNAME)
+	@make clean
 
 clean : 
 	@rm -rf $(OBJS) $(BOBJS)

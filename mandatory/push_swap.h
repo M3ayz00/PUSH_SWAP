@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 21:41:33 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/18 02:14:06 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	update_position(t_stack *stack);
 void	push_swap(t_stack **A, int chunksize);
 void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
+void	sort_5(t_stack **stack_a);
 
 // string operations
 int		ft_atoi(const char *str, char **numbers, t_stack **stack);
@@ -67,6 +68,7 @@ void	ft_perror(int e, char *err);
 
 // lst search
 int		ft_lstget_max(t_stack *stack);
+int		ft_lstget_min(t_stack *stack);
 t_stack	*ft_lstbfr_last(t_stack *stack);
 t_stack	*ft_lstlast(t_stack *lst);
 
@@ -96,9 +98,9 @@ void	init_stack(char **numbers, t_stack **stack);
 // sorting_utils
 int		*list_to_arr(t_stack *stack);
 
-// void	push_max(t_stack **A,t_stack **B);
 t_stack	*check_args(int ac, char **av);
 void	push_to_b(t_stack **a, t_stack **b, int chunksize);
 void	push_to_a(t_stack **a, t_stack **b);
+t_stack	*find_node_b(t_stack *stack, int index);
 
 #endif

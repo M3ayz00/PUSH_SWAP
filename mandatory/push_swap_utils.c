@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:57 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 21:35:34 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:59:00 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ int	ft_lstget_max(t_stack *stack)
 		stack = stack->next;
 	}
 	return (max);
+}
+
+int	ft_lstget_min(t_stack *stack)
+{
+	int	min;
+
+	min = stack->data;
+	while (stack->next)
+	{
+		if (min > stack->next->data)
+			min = stack->next->data;
+		stack = stack->next;
+	}
+	return (min);
 }
 
 t_stack	*ft_lstbfr_last(t_stack *stack)
