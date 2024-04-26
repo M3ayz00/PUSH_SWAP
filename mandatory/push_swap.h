@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:14 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/18 02:14:06 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:45:33 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	r_rotate(t_stack **stack, char *op);
 void	swap_s(t_stack **A, t_stack **B, char *op);
 void	rotate_s(t_stack **A, t_stack **B, char *op);
 void	r_rotate_s(t_stack **A, t_stack **B, char *op);
-void	rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
-void	r_rotate_both(t_stack **A, t_stack **B, t_stack *cheapest);
 
 // push_swap_utils
 void	last_rotations(t_stack **stack, t_stack *top, char c);
@@ -99,7 +97,7 @@ void	init_stack(char **numbers, t_stack **stack);
 int		*list_to_arr(t_stack *stack);
 
 t_stack	*check_args(int ac, char **av);
-void	push_to_b(t_stack **a, t_stack **b, int chunksize);
+void	push_to_b(t_stack **a, t_stack **b, int sort_window);
 void	push_to_a(t_stack **a, t_stack **b);
 t_stack	*find_node_b(t_stack *stack, int index);
 

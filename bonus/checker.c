@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:45:51 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 22:01:51 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/26 05:16:38 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	char	*operation;
 
 	if (ac == 1)
-		ft_perror(1, NULL);
+		ft_perror(0, NULL);
 	a = check_args(ac, av);
 	if (!a)
 		ft_perror(1, "Error\n");

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 19:45:19 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/01 21:06:47 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:37:27 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	indexing(t_stack *a)
 	free(arr);
 }
 
-t_stack	*find_node_a(t_stack *stack, int index, int chunksize)
+t_stack	*find_node_a(t_stack *stack, int index, int sort_window)
 {
 	t_stack	*tmp;
 
@@ -46,7 +46,7 @@ t_stack	*find_node_a(t_stack *stack, int index, int chunksize)
 	update_position(stack);
 	while (tmp)
 	{
-		if (tmp->arr_index <= index || tmp->arr_index <= index + chunksize)
+		if (tmp->arr_index <= index || tmp->arr_index <= index + sort_window)
 			return (tmp);
 		tmp = tmp->next;
 	}
@@ -68,7 +68,7 @@ t_stack	*find_node_b(t_stack *stack, int index)
 	return (NULL);
 }
 
-void	push_to_b(t_stack **a, t_stack **b, int chunksize)
+void	push_to_b(t_stack **a, t_stack **b, int sort_window)
 {
 	int	i;
 	int	size;
@@ -84,13 +84,13 @@ void	push_to_b(t_stack **a, t_stack **b, int chunksize)
 			rotate(b, "rb");
 			i++;
 		}
-		else if ((*a)->arr_index <= i + chunksize)
+		else if ((*a)->arr_index <= i + sort_window)
 		{
 			push(a, b, "pb");
 			i++;
 		}
 		else
-			last_rotations(a, find_node_a(*a, i, chunksize), 'a');
+			last_rotations(a, find_node_a(*a, i, sort_window), 'a');
 	}
 }
 
