@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:29:11 by msaadidi          #+#    #+#             */
-/*   Updated: 2024/04/25 23:25:40 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:34:28 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_stack	*check_args(int ac, char **av)
 	stack = NULL;
 	while (++i < ac - 1)
 	{
-		tmp = ft_split(av[i + 1], " \t");
+		tmp = ft_split(av[i + 1], " ");
 		if (!tmp)
 			return (free_strs(tmp), ft_lstclear(&stack), NULL);
 		if (check_input(tmp))

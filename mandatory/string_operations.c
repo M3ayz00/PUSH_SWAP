@@ -6,7 +6,7 @@
 /*   By: msaadidi <msaadidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:47:47 by m3ayz00           #+#    #+#             */
-/*   Updated: 2024/04/25 23:09:14 by msaadidi         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:34:11 by msaadidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	ft_atoi(const char *str, char **numbers, t_stack **stack)
 		else
 			return (free_strs(numbers), ft_lstclear(stack),
 				ft_perror(1, "Error\n"), 0);
+		if(!(((result * sign) <= INT_MAX && (result * sign) >= INT_MIN)))
+		return (free_strs(numbers), ft_lstclear(stack),
+			ft_perror(1, "Error\n"), 0);
 	}
-	if ((result * sign) <= INT_MAX && (result * sign) >= INT_MIN)
-		return (result * sign);
-	return (free_strs(numbers), ft_lstclear(stack),
-		ft_perror(1, "Error\n"), 0);
+	return (result * sign);
 }
